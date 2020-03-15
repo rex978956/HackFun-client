@@ -5,7 +5,7 @@
   >
     <header class="header">
       <div class="logo-title">
-        <img src="../assets/images/LOGO.svg">
+        <img src="../assets/images/logo.svg">
       </div>
       <div class="subtitle">
         <h2>想接觸資安卻不知如何入門嗎？</h2>
@@ -23,9 +23,7 @@
           >開始你的資安之旅！</button></a>
       </div>
       <div class="next">
-        <img
-          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU5LjQxNCA1OS40MTQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU5LjQxNCA1OS40MTQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8cG9seWdvbiBwb2ludHM9IjU4LDE0LjE0NiAyOS43MDcsNDIuNDM5IDEuNDE0LDE0LjE0NiAwLDE1LjU2MSAyOS43MDcsNDUuMjY4IDU5LjQxNCwxNS41NjEgIiBmaWxsPSIjRkZGRkZGIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
-        >
+        <img src="../assets/images/arrow.svg">
       </div>
     </header>
     <div
@@ -168,14 +166,14 @@
 
   .next {
     width: 100%;
-    /* position: absolute; */
     filter: drop-shadow(0 0 8px #282828);
   }
 
   .next img {
+    margin-top: 30px;
     animation: downArrow 2s infinite;
-    width: 108pt;
-    height: 60pt;
+    width: 80pt;
+    /* height: 60pt; */
   }
 
   @keyframes downArrow {
@@ -185,7 +183,7 @@
     }
 
     50% {
-      transform: translateY(4em);
+      transform: translateY(5em);
       opacity: 0.8;
     }
 
