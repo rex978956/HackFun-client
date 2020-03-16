@@ -8,18 +8,22 @@
 
 html {
   background-color: #2d2e51;
-  font: Bold 20px/29px Noto Sans CJK TC;
+  height: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  border: 0;
+  height: 100%;
 }
 
 #app {
-  top: 0px;
+  /* padding-top: 3rem; */
+  /* padding-bottom: 3rem; */
+  top: 0;
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 /* .router-backward-enter-active,

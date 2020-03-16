@@ -112,12 +112,15 @@
   </div>
 </template>
 
-<style scope>
+<style>
+  .main-container {
+    padding: 3rem 0 15rem 0;
+  }
+
   .header {
     width: 100%;
     height: 100vh;
     background-color: #141430;
-    padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
