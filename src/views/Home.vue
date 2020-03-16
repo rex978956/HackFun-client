@@ -123,9 +123,6 @@
         }
       }
     },
-    mounted() {
-      this.scrollToElement();
-    }
   }
 </script>
 
