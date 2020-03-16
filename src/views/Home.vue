@@ -17,8 +17,9 @@
       </div>
       <div class="start">
         <a
-          class="btn_style"
-          href="#course"
+          class="btn_style scroll"
+          v-scroll-to="'#course'"
+          @click="scrollToElement"
         >開始你的資安之旅！</a>
       </div>
       <div class="next">
@@ -110,6 +111,23 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    methods: {
+      scrollToElement() {
+        const el = this.$el.getElementsByClassName('scroll')[0];
+
+        if (el) {
+          el.scrollIntoView();
+        }
+      }
+    },
+    mounted() {
+      this.scrollToElement();
+    }
+  }
+</script>
 
 <style>
   .main-container {
