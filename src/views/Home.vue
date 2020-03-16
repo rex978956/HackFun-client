@@ -43,6 +43,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
           <div class="course-item">
@@ -54,6 +58,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
           <div class="course-item">
@@ -65,6 +73,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
         </div>
@@ -82,6 +94,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
           <div class="course-item">
@@ -93,6 +109,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
           <div class="course-item">
@@ -104,6 +124,10 @@
                 <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
                 <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
               </div>
+              <img
+                class="block"
+                src="../assets/images/Block.svg"
+              >
             </div>
           </div>
         </div>
@@ -268,14 +292,22 @@
   }
 
   .course-info-container {
-    height: auto;
+    position: relative;
+    /* height: auto; */
     background-color: #000;
-    box-shadow: 15px -15px #8384A4;
+    box-shadow: 13px -15px #8384A4;
   }
 
   .course-info-container>.course-info>p {
-    padding: 25px 20px 25px 20px;
+    padding: 30px 20px 30px 20px;
     text-align: left;
     font: 16px/36px Noto Sans CJK TC;
+  }
+
+  .block {
+    width: 60px;
+    position: absolute;
+    right: -14px;
+    bottom: 0px;
   }
 </style>
