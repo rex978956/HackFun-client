@@ -16,11 +16,10 @@
         <a href="#">這裡</a>
       </div>
       <div class="start">
-        <a href="#course">
-          <button
-            type="button"
-            class="btn_style"
-          >開始你的資安之旅！</button></a>
+        <a
+          class="btn_style"
+          href="#course"
+        >開始你的資安之旅！</a>
       </div>
       <div class="next">
         <img src="../assets/images/arrow.svg">
@@ -155,16 +154,26 @@
     padding-top: 3rem;
   }
 
+
   .btn_style {
-    padding: 7px 12px;
     font: Bold 20px/37px Noto Sans CJK TC;
-    color: #fff;
-    background-color: #883ccb;
-    border: 1px solid #883ccb;
-    border-radius: 12px;
+    color: #fff !important;
+    text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0;
-    cursor: pointer;
+    background: #883ccb;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+  }
+
+  .btn_style:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+    text-decoration: underline;
   }
 
   .next {
