@@ -5,7 +5,7 @@
   >
     <div class="nav-left">
       <div class="logo-icon__normal">
-        <img src="../assets/images/logo.svg">
+        <a href="/"><img src="../assets/images/logo.svg"></a>
       </div>
     </div>
     <div class="nav-right">
