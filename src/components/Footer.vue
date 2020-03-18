@@ -27,7 +27,7 @@
       </div>
       <div class="source">
         <span class="title">專案程式碼</span>
-        <a>
+        <a :href="githubIcon.link">
           <font-awesome-icon
             :icon="githubIcon.icon"
             transform="shrink-3.5 down-1.6 right-1.25"

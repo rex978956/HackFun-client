@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import mutations from './mutation-types'
+
+import fields from './modules/fields'
+
 import { routes } from '../router'
 
 Vue.use(Vuex)
@@ -13,7 +17,9 @@ export default new Vuex.Store({
     })
   },
   getters: {},
-  mutations: {},
+  mutations,
   actions: {},
-  modules: {}
+  modules: {
+    fields
+  }
 })

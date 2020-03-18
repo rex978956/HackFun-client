@@ -6,6 +6,7 @@ import { sync } from 'vuex-router-sync'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import Axios from 'axios'
 
 library.add(fab)
 

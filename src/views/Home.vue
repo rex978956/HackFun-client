@@ -29,105 +29,54 @@
     <div
       id="course"
       class="content-container"
+      v-for="(field, index) in fields"
+      :key="index"
     >
-      <div class="course-field">
-        <h1 class="course-field-name">REVERSE</h1>
-        <p class="course-field-info">Web 領域的大致介紹，為什麼分這個領域 底下有哪些東西，常見於哪些應用</p>
-        <div class="course-item-container">
+      <div
+        class="course-field"
+        v-if="field.length > 0"
+      >
+        <h1 class="course-field-name">{{index}}</h1>
+        <p class="course-field-info">{{'沒有東西QQ'}}</p>
+        <div
+          class="course-item-container"
+          v-for="item in field"
+          :key="item"
+        >
           <div class="course-item">
             <div class="course-name">
-              <h1>XSS</h1>
+              <h1>{{item.name}}</h1>
             </div>
             <div class="course-info-container">
               <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
+                <p>{{item.description}}</p>
               </div>
               <img
                 class="block"
                 src="../assets/images/Block.svg"
               >
-            </div>
-          </div>
-          <div class="course-item">
-            <div class="course-name">
-              <h1>XSS</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
+              <div class="btn_learn">
+                <a :href="`/course/${item.name}`">
+                  <svg class="icon-arrow before">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                  <span class="label">Let's learn!</span>
+                  <svg class="icon-arrow after">
+                    <use xlink:href="#arrow"></use>
+                  </svg>
+                </a>
+                <svg style="display: none;">
+                  <defs>
+                    <symbol
+                      id="arrow"
+                      viewBox="0 0 35 15"
+                    >
+                      <title>Arrow</title>
+                      <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z " />
+                    </symbol>
+                  </defs>
+                </svg>
               </div>
-              <img
-                class="block"
-                src="../assets/images/Block.svg"
-              >
-            </div>
-          </div>
-          <div class="course-item">
-            <div class="course-name">
-              <h1>XSS</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
-              </div>
-              <img
-                class="block"
-                src="../assets/images/Block.svg"
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="course-field">
-        <h1 class="course-field-name">REVERSE</h1>
-        <p class="course-field-info">Web 領域的大致介紹，為什麼分這個領域 底下有哪些東西，常見於哪些應用</p>
-        <div class="course-item-container">
-          <div class="course-item">
-            <div class="course-name">
-              <h1>XSS</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
-              </div>
-              <img
-                class="block"
-                src="../assets/images/Block.svg"
-              >
-            </div>
-          </div>
-          <div class="course-item">
-            <div class="course-name">
-              <h1>XSS</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
-              </div>
-              <img
-                class="block"
-                src="../assets/images/Block.svg"
-              >
-            </div>
-          </div>
-          <div class="course-item">
-            <div class="course-name">
-              <h1>XSS</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。</p>
-                <p>它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。</p>
-              </div>
-              <img
-                class="block"
-                src="../assets/images/Block.svg"
-              >
             </div>
           </div>
         </div>
@@ -137,8 +86,19 @@
 </template>
 
 <script>
+  import {
+    mapActions,
+    mapGetters
+  } from 'vuex'
   export default {
+    computed: {
+      ...mapGetters(['fields']),
+    },
+    mounted() {
+      this.getAllFields()
+    },
     methods: {
+      ...mapActions(['getAllFields']),
       scrollToElement() {
         const el = this.$el.getElementsByClassName('scroll')[0];
 
@@ -175,18 +135,20 @@
     line-height: 1.5;
   }
 
-  .info {
+  .info>span {
     padding-top: 10px;
     font: Bold 22px/32px Noto Sans CJK TC;
   }
 
   .info>a {
+    font: Bold 22px/32px Noto Sans CJK TC;
     color: #b06aec;
     text-decoration: none;
   }
 
   .info>a:hover {
     color: #f39251;
+    text-decoration: underline;
   }
 
   .start {
@@ -309,5 +271,75 @@
     position: absolute;
     right: -14px;
     bottom: 0px;
+  }
+
+  .btn_learn>a {
+    border: 4px solid #3F3F3F;
+    color: #3F3F3F;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    /* margin: auto; */
+    padding: 8px 30px 8px 80px;
+    position: relative;
+    text-decoration: none;
+    margin-bottom: 15px;
+  }
+
+  .btn_learn>a .label,
+  .btn_learn>a .icon-arrow {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000;
+  }
+
+  .btn_learn>a .label {
+    display: inline-block;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  .btn_learn>a .icon-arrow {
+    fill: #3F3F3F;
+    height: 15px;
+    top: 17px;
+    transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
+    width: 35px;
+  }
+
+  .btn_learn>a .icon-arrow.before {
+    left: 32px;
+    margin-right: 15px;
+    position: absolute;
+    transform-origin: left center;
+  }
+
+  .btn_learn>a .icon-arrow.after {
+    margin-left: 15px;
+    opacity: 0;
+    position: absolute;
+    right: 32px;
+    transform: translateX(75%) scaleX(0.1);
+    transform-origin: right center;
+  }
+
+  .btn_learn>a:hover {
+    border-color: #8384a4;
+    color: #8384a4;
+  }
+
+  .btn_learn>a:hover .label {
+    transform: translateX(-52px);
+  }
+
+  .btn_learn>a:hover .icon-arrow.before {
+    opacity: 0;
+    transform: translateX(-75%) scaleX(0.1);
+  }
+
+  .btn_learn>a:hover .icon-arrow.after {
+    fill: #8384a4;
+    opacity: 1;
+    transform: translateX(0) scaleX(1);
   }
 </style>
