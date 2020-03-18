@@ -23,7 +23,7 @@
       </div>
       <div class="contact">
         <span class="title">聯絡我們</span>
-        <span>contact@hackfun.space</span>
+        <a href="mailto:contact@hackfun.space"><span>contact@hackfun.space</span></a>
       </div>
       <div class="source">
         <span class="title">專案程式碼</span>
@@ -117,6 +117,14 @@
   .media-icon path:hover {
     color: #6b7bb9;
     fill: currentColor;
+  }
+
+  .contact a {
+    text-decoration: none;
+  }
+
+  .contact>a>span:hover {
+    color: #f39251;
   }
 
 
