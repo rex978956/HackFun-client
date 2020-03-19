@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Course from '../views/Course.vue'
+
 Vue.use(VueRouter)
 
 export const routes = [
@@ -24,10 +26,19 @@ export const routes = [
       label: '瀏覽課程',
       menuItem: true
     }
+  },
+  {
+    path: '/course/:courseid',
+    name: 'Course',
+    component: Course,
+    meta: {
+      menuItem: false
+    }
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

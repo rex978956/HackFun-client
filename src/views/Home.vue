@@ -3,7 +3,7 @@
     id="home"
     class="main-container"
   >
-    <header class="header">
+    <header class="home-header">
       <div class="logo-title">
         <img src="../assets/images/logo.svg">
       </div>
@@ -111,11 +111,11 @@
 </script>
 
 <style>
-  .main-container {
+  #home {
     padding: 3rem 0 15rem 0;
   }
 
-  .header {
+  .home-header {
     width: 100%;
     height: 100vh;
     background-color: #141430;
