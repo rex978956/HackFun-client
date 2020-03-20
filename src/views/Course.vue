@@ -40,8 +40,8 @@
             :key="index"
           >
             <p>{{index+'. '+item.name}}</p>
-            <a :href="`${$route.params.courseid}/${item.uuid}`">
-            </a>
+            <router-link :to="`${$route.params.courseid}/${item.uuid}`">
+            </router-link>
           </div>
         </div>
       </section>

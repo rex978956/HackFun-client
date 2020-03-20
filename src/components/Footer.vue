@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="about">
         <span class="title">關於我們</span>
-        <span>Allen0099 is hacker meow</span>
+        <span>關於我們關於我們關於我們關於我們</span>
       </div>
       <div class="icon-container">
         <a

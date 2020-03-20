@@ -56,8 +56,7 @@
                 src="../assets/images/Block.svg"
               >
               <div class="btn_learn">
-                <a :href="`./course/${item.name}`">
-
+                <router-link :to="`/course/${item.name}`">
                   <!-- <a :href="route.name"> -->
                   <!-- <h1>{{route.path}}</h1> -->
                   <svg class="icon-arrow before">
@@ -67,7 +66,7 @@
                   <svg class="icon-arrow after">
                     <use xlink:href="#arrow"></use>
                   </svg>
-                </a>
+                </router-link>
                 <svg style="display: none;">
                   <defs>
                     <symbol
