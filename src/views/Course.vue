@@ -13,7 +13,7 @@
           </div>
           <img
             class="block"
-            src="@/assets/images/Block.svg"
+            src="/images/Block.svg"
           >
         </div>
       </header>
