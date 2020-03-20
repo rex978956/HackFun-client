@@ -39,7 +39,10 @@ export const routes = [
   {
     path: '/course/:courseid/:lessonid',
     name: 'Lesson',
-    component: Lesson
+    component: Lesson,
+    meta: {
+      menuItem: false
+    }
   },
   {
     path: '*',
