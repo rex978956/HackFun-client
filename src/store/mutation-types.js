@@ -1,6 +1,6 @@
 export const FIELDS = 'FIELDS'
 
-// export const NEWS = 'NEWS'
+export const COURSE = 'COURSE'
 
 // export const POST = 'POST'
 

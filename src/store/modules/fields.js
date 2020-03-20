@@ -17,7 +17,6 @@ const mutations = {
 
 const actions = {
   async getAllFields({ commit }) {
-    console.log('hi')
     if (state.fields.length > 0) {
       return state.fields
     }

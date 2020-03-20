@@ -34,6 +34,13 @@ export const routes = [
     meta: {
       menuItem: false
     }
+  },
+  {
+    path: '*',
+    redirect: '/',
+    meta: {
+      menuItem: false
+    }
   }
 ]
 

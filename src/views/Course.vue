@@ -4,11 +4,11 @@
       class="main-container"
     >
       <header class="course-header">
-        <h1>{{'XSS'}}</h1>
+        <h1>{{course.name}}</h1>
         <div class="course-description-container">
           <div class="course-description">
             <p>
-              {{'跨網站腳本攻擊（Cross-site scripting，通常簡稱為 XSS 或跨站腳本）是一種網站應用程式的安全漏洞攻擊，是惡意注入攻擊的一種。它允許惡意用戶將惡意語法注入到網頁上，使其他用戶在觀看網頁時受到影響。此網站風險是 OWAPS Top 10 常見名單之一。'}}
+              {{course.description}}
             </p>
           </div>
           <img
@@ -34,42 +34,42 @@
             <a href="/0. HTTP 基礎教學">
             </a>
           </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
-          </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
-          </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
-          </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
-          </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
-          </div>
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
+          <div
+            class="lesson-item"
+            v-for="(item, index) in course.lessons"
+            :key="index"
+          >
+            <p>{{index+'. '+item.name}}</p>
+            <a :href="`${$route.params.courseid}/${item.uuid}`">
             </a>
           </div>
         </div>
       </section>
     </div>
   </template>
+
+  <script>
+    import {
+      mapActions,
+      mapGetters
+    } from 'vuex'
+    export default {
+      computed: {
+        ...mapGetters(['course']),
+      },
+      mounted() {
+        this.getCourse(this.$route.params.courseid)
+      },
+      methods: {
+        ...mapActions(['getCourse']),
+      },
+    }
+  </script>
+
+
+
   <style>
-    #course {
+    #course.main-container {
       padding: 3rem 0 25rem 0;
     }
 

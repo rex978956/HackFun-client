@@ -111,7 +111,7 @@
 </script>
 
 <style>
-  #home {
+  #home.main-container {
     padding: 3rem 0 15rem 0;
   }
 

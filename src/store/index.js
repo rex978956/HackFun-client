@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import mutations from './mutation-types'
 
 import fields from './modules/fields'
+import course from './modules/course'
 
 import { routes } from '../router'
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
   mutations,
   actions: {},
   modules: {
-    fields
+    fields,
+    course
   }
 })
