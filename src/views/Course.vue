@@ -87,8 +87,7 @@
 
     .course-header>.course-description-container {
       position: relative;
-      box-shadow: 13px -15px #8384A4;
-      padding-bottom: 15px;
+      box-shadow: 14px -14px #8384A4;
     }
 
     .course-header>.course-description-container>.course-description>p {
