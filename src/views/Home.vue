@@ -56,7 +56,10 @@
                 src="../assets/images/Block.svg"
               >
               <div class="btn_learn">
-                <a :href="`/course/${item.name}`">
+                <a :href="`./course/${item.name}`">
+
+                  <!-- <a :href="route.name"> -->
+                  <!-- <h1>{{route.path}}</h1> -->
                   <svg class="icon-arrow before">
                     <use xlink:href="#arrow"></use>
                   </svg>
