@@ -31,6 +31,7 @@ export const routes = [
     path: '/course/:courseid',
     name: 'Course',
     component: Course,
+    props: true,
     meta: {
       menuItem: false
     }
