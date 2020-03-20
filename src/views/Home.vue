@@ -5,7 +5,7 @@
   >
     <header class="home-header">
       <div class="logo-title">
-        <img src="../assets/images/logo.svg">
+        <img src="@/assets/images/logo.svg">
       </div>
       <div class="subtitle">
         <h2>想接觸資安卻不知如何入門嗎？</h2>
@@ -23,7 +23,7 @@
         >開始你的資安之旅！</a>
       </div>
       <div class="next">
-        <img src="../assets/images/arrow.svg">
+        <img src="@/assets/images/arrow.svg">
       </div>
     </header>
     <div
@@ -53,7 +53,7 @@
               </div>
               <img
                 class="block"
-                src="../assets/images/Block.svg"
+                src="@/assets/images/Block.svg"
               >
               <div class="btn_learn">
                 <router-link :to="`/course/${item.name}`">

@@ -5,7 +5,7 @@
   >
     <div class="nav-left">
       <div class="logo-icon__normal">
-        <router-link to="/"><img src="../assets/images/logo.svg">
+        <router-link to="/"><img src="@/assets/images/logo.svg">
         </router-link>
       </div>
     </div>

@@ -46,7 +46,7 @@ export const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: '/HackFun-client/',
+  // base: '/HackFun-client/',
   routes
 })
 
