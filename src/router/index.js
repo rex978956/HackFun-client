@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Course from '../views/Course.vue'
-
+import Lesson from '../views/Lesson.vue'
 Vue.use(VueRouter)
 
 export const routes = [
@@ -35,6 +35,11 @@ export const routes = [
     meta: {
       menuItem: false
     }
+  },
+  {
+    path: '/course/:courseid/:lessonid',
+    name: 'Lesson',
+    component: Lesson
   },
   {
     path: '*',
