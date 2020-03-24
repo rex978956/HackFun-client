@@ -2,7 +2,7 @@ export const FIELDS = 'FIELDS'
 
 export const COURSE = 'COURSE'
 
-// export const POST = 'POST'
+export const LESSON = 'LESSON'
 
 // export const FILES = 'FILES'
 
