@@ -37,7 +37,7 @@
       >
         <hr v-show="index">
         <div class="quiz-text">
-          <h1>{{item.title}}</h1>
+          <h1>{{index+1+'. '+item.title}}</h1>
           <p>{{item.content.text}}</p>
           <p>網站位置：<a :href="item.content.path">{{item.content.path}}</a></p>
         </div>
@@ -101,7 +101,7 @@
     /* justify-content: center; */
     flex-direction: row;
     width: 55%;
-    background: #5F4EB7 0% 0% no-repeat padding-box;
+    background: #5F4EB7;
     border-radius: 35px;
     padding: 3% 3%;
     margin-bottom: 3rem;
