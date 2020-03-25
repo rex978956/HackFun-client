@@ -26,6 +26,17 @@ body {
   min-height: 100%;
 }
 
+
+.transition-group {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+
 /* .router-backward-enter-active,
 .router-forward-enter-active,
 .router-backward-leave-active,
