@@ -23,7 +23,7 @@
     width: 64vw;
     height: 36vw;
     margin: 3rem 0;
-    border: 16px solid #000;
+    border: 12px solid #000000;
   }
 
   .videoWrapper iframe {
