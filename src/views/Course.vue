@@ -3,63 +3,85 @@
       id="course"
       class="main-container"
     >
-      <header class="course-header">
-        <h1>{{course.name}}</h1>
-        <div class="course-description-container">
-          <div class="course-description">
-            <p>
-              {{course.description}}
-            </p>
+      <section v-if="isLoading">
+        <Loading
+          type="sk-chase"
+          at="transition-container"
+        />
+      </section>
+      <section :class="{ 'loading-blur': isLoading }">
+        <header class="course-header">
+          <h1>{{course.name}}</h1>
+          <div class="course-description-container">
+            <div class="course-description">
+              <p>
+                {{course.description}}
+              </p>
+            </div>
+            <img
+              class="block"
+              src="/images/Block.svg"
+            >
           </div>
-          <img
-            class="block"
-            src="/images/Block.svg"
-          >
-        </div>
-      </header>
-      <section class="course-section">
-        <div class="course-base-container">
-          <h1>建議先備知識</h1>
-          <hr>
-          <p>Linux 基礎操作</p>
-          <ol>
-            <li>鳥哥的 Linux 基礎教學</li>
-            <li>鳥哥的 Linux 基礎教學</li>
-          </ol>
-          <hr>
-        </div>
-        <div class="lesson-container">
-          <div class="lesson-item">
-            <p>0. HTTP 基礎教學</p>
-            <a href="/0. HTTP 基礎教學">
-            </a>
+        </header>
+        <section class="course-section">
+          <div class="course-base-container">
+            <h1>建議先備知識</h1>
+            <hr>
+            <p>Linux 基礎操作</p>
+            <ol>
+              <li>鳥哥的 Linux 基礎教學</li>
+              <li>鳥哥的 Linux 基礎教學</li>
+            </ol>
+            <hr>
           </div>
-          <div
-            class="lesson-item"
-            v-for="(item, index) in course.lessons"
-            :key="index"
-          >
-            <p>{{index+'. '+item.name}}</p>
-            <router-link :to="`${$route.params.courseid}/${item.name}`">
-            </router-link>
+          <div class="lesson-container">
+            <div class="lesson-item">
+              <p>0. HTTP 基礎教學</p>
+              <a href="/0. HTTP 基礎教學">
+              </a>
+            </div>
+            <div
+              class="lesson-item"
+              v-for="(item, index) in course.lessons"
+              :key="index"
+            >
+              <p>{{index+'. '+item.name}}</p>
+              <router-link :to="`${$route.params.courseid}/${item.name}`">
+              </router-link>
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   </template>
 
   <script>
+    import Loading from "@/components/Loading";
     import {
       mapActions,
       mapGetters
     } from 'vuex'
     export default {
+      data() {
+        return {
+          isLoading: false
+        }
+      },
+      components: {
+        Loading
+      },
       computed: {
         ...mapGetters(['course']),
       },
-      mounted() {
+      created() {
+        this.isLoading = true
         this.getCourse(this.$route.params.courseid)
       },
+      mounted() {
+        this.isLoading = false
+      },
+      updated() {},
       methods: {
         ...mapActions(['getCourse']),
       },

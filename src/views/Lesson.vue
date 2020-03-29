@@ -3,67 +3,80 @@
     id="lesson"
     class="main-container"
   >
-    <VideoFrame :src="lesson.ytsrc" />
-    <div class="lesson-info-container">
-      <div class="lesson-info">
-        <h1>{{lesson.index+'. '+lesson.name}}</h1>
-        <p
-          v-for="(item, index) in lesson.description"
-          :key="index"
-        >{{item}}</p>
-      </div>
-      <div class="arrow-left">
-        <a href="#">
-          <img src=/images/Back.svg />
-          <p>上一堂</p>
-        </a>
-      </div>
-      <div class="arrow-right">
-        <a href="#">
-          <p>下一堂</p>
-          <img src=/images/Next.svg />
-        </a>
-      </div>
-    </div>
-    <div
-      class="lesson-quiz-container"
-      v-if="lesson.quiz.length"
+    <section v-if="isLoading">
+      <Loading
+        type="sk-chase"
+        at="transition-container"
+      />
+    </section>
+    <section
+      v-else
+      :class="{ 'loading-blur': isLoading }"
     >
-      <div class="lesson-quiz-info">
-        <p>精通這門課了嗎?</p>
-        <p>挑戰看看吧!</p>
-      </div>
-      <div
-        class="quiz-item"
-        v-for="(item, index) in lesson.quiz"
-        :key="index"
-      >
-        <hr v-show="index">
-        <div class="quiz-text">
-          <h1>{{index+1+'. '+item.title}}</h1>
-          <p>{{item.content.text}}</p>
-          <p>網站位置：<a
-              :href="item.content.path"
-              target="_blank"
-            >{{item.content.path}}</a></p>
+      <div class="lesson-wrapper">
+        <VideoFrame :src="lesson.ytsrc" />
+        <div class="lesson-info-container">
+          <div class="lesson-info">
+            <h1>{{lesson.index+'. '+lesson.name}}</h1>
+            <p
+              v-for="(item, index) in lesson.description"
+              :key="index"
+            >{{item}}</p>
+          </div>
+          <div class="arrow-left">
+            <a href="#">
+              <img src=/images/Back.svg />
+              <p>上一堂</p>
+            </a>
+          </div>
+          <div class="arrow-right">
+            <a href="#">
+              <p>下一堂</p>
+              <img src=/images/Next.svg />
+            </a>
+          </div>
         </div>
-        <div class="quiz-flag-container">
-          <div class="quiz-flag">
-            <input
-              class="flag"
-              type="text"
-              placeholder="Flag 格式 HackFun{xxxxxxx}"
-              name="flag"
-              maxlength="41"
-            />
-            <button
-              class="submit"
-              type="submit"
-            >送出</button>
+        <div
+          class="lesson-quiz-container"
+          v-if="lesson.quiz && lesson.quiz.length"
+        >
+          <div class="lesson-quiz-info">
+            <p>精通這門課了嗎?</p>
+            <p>挑戰看看吧!</p>
+          </div>
+          <div
+            class="quiz-item"
+            v-for="(item, index) in lesson.quiz"
+            :key="index"
+          >
+            <hr v-show="index">
+            <div class="quiz-text">
+              <h1>{{index+1+'. '+item.title}}</h1>
+              <p>{{item.content.text}}</p>
+              <p>網站位置：<a
+                  :href="item.content.path"
+                  target="_blank"
+                >{{item.content.path}}</a></p>
+            </div>
+            <div class="quiz-flag-container">
+              <div class="quiz-flag">
+                <input
+                  class="flag"
+                  type="text"
+                  placeholder="Flag 格式 HackFun{xxxxxxx}"
+                  name="flag"
+                  maxlength="41"
+                />
+                <button
+                  class="submit"
+                  type="submit"
+                >送出</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -74,19 +87,34 @@
   } from 'vuex'
 
   import VideoFrame from "@/components/VideoFrame";
+  import Loading from "@/components/Loading";
 
   export default {
+    data() {
+      return {
+        isLoading: false
+      }
+    },
     components: {
-      VideoFrame
+      VideoFrame,
+      Loading
     },
     computed: {
       ...mapGetters(['lesson']),
+      ...mapGetters(['isAppending']),
+    },
+    created() {
+      this.isLoading = true
+      this.getLesson('meow')
     },
     mounted() {
-      this.getLesson('meow')
+      this.getLoadingState()
     },
     methods: {
       ...mapActions(['getLesson']),
+      getLoadingState() {
+        this.isLoading = this.lesson.isAppending
+      }
     },
   }
 </script>
@@ -94,6 +122,9 @@
 <style>
   #lesson.main-container {
     padding: 3.5rem 0 15rem 0;
+  }
+
+  .lesson-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
@@ -101,7 +132,8 @@
     flex-direction: column;
   }
 
-  #lesson.main-container>.lesson-info-container {
+
+  .lesson-wrapper>.lesson-info-container {
     display: flex;
     /* align-items: center; */
     /* justify-content: center; */

@@ -76,7 +76,7 @@
     bottom: 0;
     width: 100%;
     background-color: #000;
-    /* z-index: 1000; */
+    z-index: 1000;
     /* flex-direction: row; */
     /* justify-content: space-between; */
   }
@@ -91,7 +91,6 @@
     grid-gap: 30px;
     padding: 2rem 10%;
     transition: all .3s ease-in-out;
-    z-index: 1000;
   }
 
   .footer-container>.about,

@@ -37,6 +37,7 @@
       <div class="page-back">
         <router-link to=".">
           <img src="@/assets/images/Page_back.svg">
+
         </router-link>
       </div>
       <div class="course-name">
@@ -108,6 +109,7 @@
   }
 
   .nav-left>.logo-icon__normal {
+    transition: all ease-in-out 0.3s;
     width: 100px;
     fill: #ffffff;
   }
@@ -165,6 +167,7 @@
 
   .page-back img {
     height: 1.5rem;
+    transition: all ease-in-out 0.3s;
   }
 
   .course-name {

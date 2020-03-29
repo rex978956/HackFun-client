@@ -3,13 +3,15 @@ import axios from 'axios'
 
 const state = {
   lesson: {
-    name: ''
+    name: '',
+    isAppending: true
   }
 }
 
 const getters = {
   lesson: state => state.lesson,
-  lessonIndex: state => state.lesson.index
+  lessonIndex: state => state.lesson.index,
+  isAppending: state => state.lesson.isAppending
 }
 
 const mutations = {
@@ -23,7 +25,10 @@ const actions = {
     if (state.lesson.name === name) {
       return state.lesson
     }
-    let res = await axios.get('http://163.13.127.158:5555/api/lesson/' + name)
+    let res = await axios.get('http://163.13.127.158:5555/api/lesson/' + name, {
+      timeout: 5000
+    })
+    res.data.lesson['isAppending'] = false
     commit(types.LESSON, res.data.lesson)
     return res.data.lesson
   }

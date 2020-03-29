@@ -3,87 +3,99 @@
     id="home"
     class="main-container"
   >
-    <header class="home-header">
-      <div class="logo-title">
-        <img src="@/assets/images/logo.svg">
+    <section v-if="isLoading">
+      <Loading
+        type="sk-chase"
+        at="transition-container"
+      />
+    </section>
+    <section :class="{ 'loading-blur': isLoading }">
+      <header class="home-header">
+        <div class="logo-title">
+          <img src="@/assets/images/logo.svg">
+        </div>
+        <div class="subtitle">
+          <h2>想接觸資安卻不知如何入門嗎？</h2>
+          <h2>我們準備了一些教學，請找適合自己的服用 :)</h2>
+        </div>
+        <div class="info">
+          <span>* 建議熟悉基本 HTML/JS 知識，若對這塊尚不了解可參考</span>
+          <a href="#">這裡</a>
+        </div>
+        <div class="start">
+          <a
+            class="btn_style scroll"
+            v-scroll-to="'#course'"
+            @click="scrollToElement"
+          >開始你的資安之旅！</a>
+        </div>
+        <div class="next">
+          <img src="@/assets/images/arrow.svg">
+        </div>
+      </header>
+      <div class="intro-container">
+        <h1 class="intro-title">資訊安全的領域</h1>
+        <p class="intro-info">資訊安全的技術主要被分成哪幾種領域，簡單介紹 資訊安全的技術主要被分成哪幾種領域，簡單介紹 資訊安全的技術主要被分成哪幾種領域，簡單介紹</p>
       </div>
-      <div class="subtitle">
-        <h2>想接觸資安卻不知如何入門嗎？</h2>
-        <h2>我們準備了一些教學，請找適合自己的服用 :)</h2>
-      </div>
-      <div class="info">
-        <span>* 建議熟悉基本 HTML/JS 知識，若對這塊尚不了解可參考</span>
-        <a href="#">這裡</a>
-      </div>
-      <div class="start">
-        <a
-          class="btn_style scroll"
-          v-scroll-to="'#course'"
-          @click="scrollToElement"
-        >開始你的資安之旅！</a>
-      </div>
-      <div class="next">
-        <img src="@/assets/images/arrow.svg">
-      </div>
-    </header>
-    <div
-      id="course"
-      class="content-container"
-      v-for="(field, index) in fields"
-      :key="index"
-    >
       <div
-        class="course-field"
-        v-if="field.length > 0"
+        id="course"
+        class="content-container"
+        v-for="(field, index) in fields"
+        :key="index"
       >
-        <h1 class="course-field-name">{{index}}</h1>
-        <p class="course-field-info">{{'沒有東西QQ'}}</p>
         <div
-          class="course-item-container"
-          v-for="item in field"
-          :key="item"
+          class="course-field"
+          v-if="field.length > 0"
         >
-          <div class="course-item">
-            <div class="course-name">
-              <h1>{{item.name}}</h1>
-            </div>
-            <div class="course-info-container">
-              <div class="course-info">
-                <p>{{item.description}}</p>
+          <h1 class="course-field-name">{{index}}</h1>
+          <p class="course-field-info">{{'沒有東西QQ'}}</p>
+          <div
+            class="course-item-container"
+            v-for="item in field"
+            :key="item"
+          >
+            <div class="course-item">
+              <div class="course-name">
+                <h1>{{item.name}}</h1>
               </div>
-              <img
-                class="block"
-                src="@/assets/images/Block.svg"
-              >
-              <div class="btn_learn">
-                <router-link :to="`/course/${item.name}`">
-                  <!-- <a :href="route.name"> -->
-                  <!-- <h1>{{route.path}}</h1> -->
-                  <svg class="icon-arrow before">
-                    <use xlink:href="#arrow"></use>
+              <div class="course-info-container">
+                <div class="course-info">
+                  <p>{{item.description}}</p>
+                </div>
+                <img
+                  class="block"
+                  src="@/assets/images/Block.svg"
+                >
+                <div class="btn_learn">
+                  <router-link :to="`/course/${item.name}`">
+                    <!-- <a :href="route.name"> -->
+                    <!-- <h1>{{route.path}}</h1> -->
+                    <svg class="icon-arrow before">
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                    <span class="label">Let's learn!</span>
+                    <svg class="icon-arrow after">
+                      <use xlink:href="#arrow"></use>
+                    </svg>
+                  </router-link>
+                  <svg style="display: none;">
+                    <defs>
+                      <symbol
+                        id="arrow"
+                        viewBox="0 0 35 15"
+                      >
+                        <title>Arrow</title>
+                        <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z " />
+                      </symbol>
+                    </defs>
                   </svg>
-                  <span class="label">Let's learn!</span>
-                  <svg class="icon-arrow after">
-                    <use xlink:href="#arrow"></use>
-                  </svg>
-                </router-link>
-                <svg style="display: none;">
-                  <defs>
-                    <symbol
-                      id="arrow"
-                      viewBox="0 0 35 15"
-                    >
-                      <title>Arrow</title>
-                      <path d="M27.172 5L25 2.828 27.828 0 34.9 7.071l-7.07 7.071L25 11.314 27.314 9H0V5h27.172z " />
-                    </symbol>
-                  </defs>
-                </svg>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -92,14 +104,28 @@
     mapActions,
     mapGetters
   } from 'vuex'
+  import Loading from "@/components/Loading";
   export default {
-
+    data() {
+      return {
+        isLoading: false
+      }
+    },
+    components: {
+      Loading
+    },
+    created() {
+      this.isLoading = true
+      this.getAllFields()
+    },
     computed: {
       ...mapGetters(['fields']),
     },
     mounted() {
-      this.getAllFields()
+
+      this.isLoading = false
     },
+    updated() {},
     methods: {
       ...mapActions(['getAllFields']),
       scrollToElement() {
@@ -108,7 +134,7 @@
         if (el) {
           el.scrollIntoView();
         }
-      }
+      },
     },
   }
 </script>
@@ -209,7 +235,7 @@
     }
   }
 
-
+  .intro-container,
   .content-container {
     padding-top: 3rem;
     display: flex;
@@ -225,6 +251,7 @@
     align-items: center;
   }
 
+  .intro-title,
   .course-field-name {
     font: Bold 60px/87px Noto Sans CJK TC;
     border-bottom: 2px solid #ffffff;
@@ -232,6 +259,7 @@
     width: 430px;
   }
 
+  .intro-info,
   .course-field-info {
     padding: 2rem 0 2rem 0;
     font: 20px/36px Noto Sans CJK TC;

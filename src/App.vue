@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar />
-    <router-view class="transition-group" />
+    <router-view class="transition-container" />
     <Footer />
   </div>
 </template>
