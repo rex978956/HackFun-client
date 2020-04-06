@@ -2,6 +2,7 @@
 node_modules
 /dist
 /shell_scripts
+/template_bak
 
 # local env files
 .env.local

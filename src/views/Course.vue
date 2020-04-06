@@ -3,61 +3,81 @@
       id="course"
       class="main-container"
     >
-      <section v-if="isLoading">
+      <!-- <section v-if="isLoading">
         <Loading
           type="sk-chase"
           at="transition-container"
         />
-      </section>
-      <section :class="{ 'loading-blur': isLoading }">
-        <header class="course-header">
-          <h1>{{course.name}}</h1>
-          <div class="course-description-container">
-            <div class="course-description">
-              <p>
-                {{course.description}}
-              </p>
-            </div>
-            <img
-              class="block"
-              src="/images/Block.svg"
-            >
+      </section> -->
+      <!-- <section :class="{ 'loading-blur': isLoading }"> -->
+      <header class="course-header">
+        <h1>{{course.name}}</h1>
+        <div class="course-description-container">
+          <div class="course-description">
+            <p>
+              {{course.description}}
+            </p>
           </div>
-        </header>
-        <section class="course-section">
-          <div class="course-base-container">
-            <h1>建議先備知識</h1>
-            <hr>
-            <p>Linux 基礎操作</p>
-            <ol>
-              <li>鳥哥的 Linux 基礎教學</li>
-              <li>鳥哥的 Linux 基礎教學</li>
-            </ol>
-            <hr>
-          </div>
-          <div class="lesson-container">
-            <div class="lesson-item">
+          <img
+            class="block"
+            src="/images/Block.svg"
+          >
+        </div>
+      </header>
+      <section class="course-section">
+        <div
+          class="course-base-container"
+          v-if="course.prepareKnowledge.length>0"
+        >
+          <h1>建議先備知識</h1>
+          <!-- <hr>
+          <p>{{course.prepareKnowledge.title}}</p>
+          <ol>
+            <li
+              v-for="item in course.prepareKnowledge.item"
+              :key="item"
+            >{{item}}</li>
+          </ol>
+          <hr> -->
+        </div>
+        <!-- 測試資料  -->
+        <div
+          class="course-base-container"
+          v-else
+        >
+          <h1>建議先備知識</h1>
+          <hr>
+          <p>Linux 基礎操作</p>
+          <ol>
+            <li>course.prepareKnowledge.length>0</li>
+            <li>測試測試</li>
+          </ol>
+          <hr>
+        </div>
+
+        <div class="lesson-container">
+          <!-- <div class="lesson-item">
               <p>0. HTTP 基礎教學</p>
               <a href="/0. HTTP 基礎教學">
               </a>
-            </div>
-            <div
-              class="lesson-item"
-              v-for="(item, index) in course.lessons"
-              :key="index"
-            >
-              <p>{{index+'. '+item.name}}</p>
-              <router-link :to="`${$route.params.courseid}/${item.name}`">
-              </router-link>
-            </div>
+            </div> -->
+          <div
+            class="lesson-item"
+            v-for="(item, index) in course.lessons"
+            :key="index"
+          >
+            <p>{{index+'. '+item.name}}</p>
+            <router-link :to="`${$route.params.courseid}/${item.id}`">
+            </router-link>
           </div>
-        </section>
+        </div>
       </section>
+      <!-- </section> -->
     </div>
   </template>
 
   <script>
-    import Loading from "@/components/Loading";
+    // import Loading from "@/components/Loading";
     import {
       mapActions,
       mapGetters
@@ -69,7 +89,7 @@
         }
       },
       components: {
-        Loading
+        // Loading
       },
       computed: {
         ...mapGetters(['course']),
@@ -92,7 +112,7 @@
 
   <style>
     #course.main-container {
-      padding: 3rem 0 25rem 0;
+      padding: 3.5rem 0 25rem 0;
     }
 
     .course-header {

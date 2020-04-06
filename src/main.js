@@ -6,6 +6,7 @@ import { sync } from 'vuex-router-sync'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import GSignInButton from 'vue-google-signin-button'
 // import VueLoading from 'vue-loading-overlay'
 // import 'vue-loading-overlay/dist/vue-loading.css'
 // import Axios from 'axios'
@@ -21,6 +22,8 @@ Vue.config.productionTip = false
 var VueScrollTo = require('vue-scrollto')
 
 Vue.use(VueScrollTo)
+
+// Vue.use(GSignInButton)
 
 new Vue({
   router,

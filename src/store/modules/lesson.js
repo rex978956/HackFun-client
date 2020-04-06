@@ -3,40 +3,49 @@ import axios from 'axios'
 
 const state = {
   lesson: {
-    name: '',
-    isAppending: true
-  }
+    id: -1,
+    // isAppending: true,
+  },
 }
 
 const getters = {
-  lesson: state => state.lesson,
-  lessonIndex: state => state.lesson.index,
-  isAppending: state => state.lesson.isAppending
+  lesson: (state) => state.lesson,
+  lessonInfo: (state) => {
+    return {
+      index: state.lesson.index,
+      name: state.lesson.name,
+      coursename: state.lesson.course,
+    }
+  },
+  // isAppending: (state) => state.lesson.isAppending,
 }
 
 const mutations = {
   [types.LESSON](state, lesson) {
     state.lesson = lesson
-  }
+  },
 }
 
 const actions = {
-  async getLesson({ commit }, name) {
-    if (state.lesson.name === name) {
+  async getLesson({ commit }, lessonid) {
+    if (state.lesson.id === lessonid) {
       return state.lesson
     }
-    let res = await axios.get('http://163.13.127.158:5555/api/lesson/' + name, {
-      timeout: 5000
-    })
-    res.data.lesson['isAppending'] = false
+    let res = await axios.get(
+      'https://www.hackfun.space/api/lesson/' + lessonid,
+      {
+        timeout: 1000,
+      }
+    )
+    // res.data.lesson['isAppending'] = false
     commit(types.LESSON, res.data.lesson)
     return res.data.lesson
-  }
+  },
 }
 
 export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 }

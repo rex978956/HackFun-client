@@ -14,8 +14,8 @@ export const routes = [
     meta: {
       index: 0,
       label: '首頁',
-      menuItem: true
-    }
+      menuItem: true,
+    },
   },
   {
     path: '/About',
@@ -24,8 +24,8 @@ export const routes = [
     meta: {
       index: 1,
       label: '瀏覽課程',
-      menuItem: true
-    }
+      menuItem: true,
+    },
   },
   {
     path: '/course/:courseid',
@@ -33,24 +33,24 @@ export const routes = [
     component: Course,
     props: true,
     meta: {
-      menuItem: false
-    }
+      menuItem: false,
+    },
   },
   {
     path: '/course/:courseid/:lessonid',
     name: 'Lesson',
     component: Lesson,
     meta: {
-      menuItem: false
-    }
+      menuItem: false,
+    },
   },
   {
     path: '*',
     redirect: '/',
     meta: {
-      menuItem: false
-    }
-  }
+      menuItem: false,
+    },
+  },
 ]
 
 const router = new VueRouter({
@@ -60,15 +60,15 @@ const router = new VueRouter({
   scrollBehavior(to) {
     if (to.hash) {
       return {
-        selector: to.hash
+        selector: to.hash,
       }
     } else {
       return {
         x: 0,
-        y: 0
+        y: 0,
       }
     }
-  }
+  },
 })
 
 export default router

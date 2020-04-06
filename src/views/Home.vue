@@ -47,8 +47,8 @@
           class="course-field"
           v-if="field.length > 0"
         >
-          <h1 class="course-field-name">{{index}}</h1>
-          <p class="course-field-info">{{'沒有東西QQ'}}</p>
+          <!-- <h1 class="course-field-name">{{index}}</h1>
+          <p class="course-field-info">{{'沒有東西QQ'}}</p> -->
           <div
             class="course-item-container"
             v-for="item in field"
@@ -67,7 +67,7 @@
                   src="@/assets/images/Block.svg"
                 >
                 <div class="btn_learn">
-                  <router-link :to="`/course/${item.name}`">
+                  <router-link :to="`/course/${item.id}`">
                     <!-- <a :href="route.name"> -->
                     <!-- <h1>{{route.path}}</h1> -->
                     <svg class="icon-arrow before">
@@ -154,38 +154,38 @@
     align-items: center;
   }
 
-  .logo-title {
+  #home .logo-title {
     width: 350px;
   }
 
-  .subtitle {
+  #home .subtitle {
     font: Bold 26px/37px Noto Sans CJK TC;
     padding: 40px 0 40px 0;
     line-height: 1.5;
   }
 
-  .info>span {
+  #home .info>span {
     padding-top: 10px;
     font: Bold 22px/32px Noto Sans CJK TC;
   }
 
-  .info>a {
+  #home .info>a {
     font: Bold 22px/32px Noto Sans CJK TC;
     color: #b06aec;
     text-decoration: none;
   }
 
-  .info>a:hover {
+  #home .info>a:hover {
     color: #f39251;
     text-decoration: underline;
   }
 
-  .start {
+  #home .start {
     padding-top: 3rem;
   }
 
 
-  .btn_style {
+  #home .btn_style {
     font: Bold 20px/37px Noto Sans CJK TC;
     color: #fff !important;
     text-transform: uppercase;
@@ -198,7 +198,7 @@
     transition: all 0.4s ease 0s;
   }
 
-  .btn_style:hover {
+  #home .btn_style:hover {
     background: #434343;
     letter-spacing: 1px;
     box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -206,12 +206,12 @@
     text-decoration: underline;
   }
 
-  .next {
+  #home .next {
     width: 100%;
     filter: drop-shadow(0 0 8px #282828);
   }
 
-  .next img {
+  #home .next img {
     margin-top: 30px;
     animation: downArrow 2s infinite;
     width: 80pt;
@@ -235,76 +235,87 @@
     }
   }
 
-  .intro-container,
-  .content-container {
+  #home .intro-container,
+  #home .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #home .content-container:last-of-type {
+    padding-bottom: 4rem;
+  }
+
+
+  #home .intro-container {
     padding-top: 3rem;
+  }
+
+  #home .course-field {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .course-field {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .intro-title,
-  .course-field-name {
+  #home .intro-title {
     font: Bold 60px/87px Noto Sans CJK TC;
     border-bottom: 2px solid #ffffff;
-    padding-bottom: 8px;
     width: 430px;
   }
 
-  .intro-info,
-  .course-field-info {
+  #home .intro-info,
+  #home .course-field-info {
     padding: 2rem 0 2rem 0;
     font: 20px/36px Noto Sans CJK TC;
     width: 400px;
   }
 
-  .course-item-container {
+  #home .course-item-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem 0 2rem 0;
-    width: 84vw;
+    padding: 0;
+    width: 65vw;
   }
 
-  .course-item {
-    width: 25vw;
+  #home .course-item {
+    padding: 3rem 0 1rem 0;
+    width: 100%;
   }
 
-  .course-item>.course-name>h1 {
-    font: Black 36px/52px Noto Sans CJK TC;
+  #home .course-item>.course-name {
+    padding-left: 13px;
+  }
+
+  #home .course-item>.course-name>h1 {
+    text-align: left;
+    font: bold 48px/60px Noto Sans CJK TC;
     padding-bottom: 2rem;
   }
 
-  .course-info-container {
+  #home .course-info-container {
     position: relative;
     /* height: auto; */
     background-color: #000;
     box-shadow: 13px -15px #8384A4;
   }
 
-  .course-info-container>.course-info>p {
-    padding: 30px 20px 30px 20px;
+  #home .course-info-container>.course-info>p {
+    padding: 35px 55px 25px 55px;
     text-align: left;
-    font: 16px/36px Noto Sans CJK TC;
+    font: 18px/36px Noto Sans CJK TC;
   }
 
-  .block {
+  #home .block {
     width: 60px;
     position: absolute;
     right: -14px;
     bottom: 0px;
   }
 
-  .btn_learn>a {
+  #home .btn_learn>a {
     border: 4px solid #3F3F3F;
     color: #3F3F3F;
     display: inline-block;
@@ -318,19 +329,19 @@
     margin-bottom: 15px;
   }
 
-  .btn_learn>a .label,
-  .btn_learn>a .icon-arrow {
+  #home .btn_learn>a .label,
+  #home .btn_learn>a .icon-arrow {
     backface-visibility: hidden;
     transform: translateZ(0);
     perspective: 1000;
   }
 
-  .btn_learn>a .label {
+  #home .btn_learn>a .label {
     display: inline-block;
     transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
   }
 
-  .btn_learn>a .icon-arrow {
+  #home .btn_learn>a .icon-arrow {
     fill: #3F3F3F;
     height: 15px;
     top: 17px;
@@ -338,14 +349,14 @@
     width: 35px;
   }
 
-  .btn_learn>a .icon-arrow.before {
+  #home .btn_learn>a .icon-arrow.before {
     left: 32px;
     margin-right: 15px;
     position: absolute;
     transform-origin: left center;
   }
 
-  .btn_learn>a .icon-arrow.after {
+  #home .btn_learn>a .icon-arrow.after {
     margin-left: 15px;
     opacity: 0;
     position: absolute;
@@ -354,21 +365,21 @@
     transform-origin: right center;
   }
 
-  .btn_learn>a:hover {
+  #home .btn_learn>a:hover {
     border-color: #8384a4;
     color: #8384a4;
   }
 
-  .btn_learn>a:hover .label {
+  #home .btn_learn>a:hover .label {
     transform: translateX(-52px);
   }
 
-  .btn_learn>a:hover .icon-arrow.before {
+  #home .btn_learn>a:hover .icon-arrow.before {
     opacity: 0;
     transform: translateX(-75%) scaleX(0.1);
   }
 
-  .btn_learn>a:hover .icon-arrow.after {
+  #home .btn_learn>a:hover .icon-arrow.after {
     fill: #8384a4;
     opacity: 1;
     transform: translateX(0) scaleX(1);

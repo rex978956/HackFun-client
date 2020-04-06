@@ -5,18 +5,19 @@ const state = {
   course: {
     name: '',
     description: '',
-    lessons: []
-  }
+    prepareKnowledge: [],
+    lessons: [],
+  },
 }
 
 const getters = {
-  course: state => state.course
+  course: (state) => state.course,
 }
 
 const mutations = {
   [types.COURSE](state, course) {
     state.course = course
-  }
+  },
 }
 
 const actions = {
@@ -27,12 +28,12 @@ const actions = {
     let res = await axios.get('https://www.hackfun.space/api/course/' + name)
     commit(types.COURSE, res.data.course)
     return res.data.course
-  }
+  },
 }
 
 export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 }

@@ -4,7 +4,9 @@ export const COURSE = 'COURSE'
 
 export const LESSON = 'LESSON'
 
-// export const FILES = 'FILES'
+export const AUTHSTATE = 'AUTHSTATE'
+
+export const PROFILE = 'PROFILE'
 
 // export const TODOS = 'TODOS'
 

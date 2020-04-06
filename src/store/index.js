@@ -6,6 +6,7 @@ import mutations from './mutation-types'
 import fields from './modules/fields'
 import course from './modules/course'
 import lesson from './modules/lesson'
+import user from './modules/auth'
 
 import { routes } from '../router'
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
   modules: {
     fields,
     course,
-    lesson
+    lesson,
+    user
   }
 })
