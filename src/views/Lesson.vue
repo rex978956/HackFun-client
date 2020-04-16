@@ -30,7 +30,7 @@
           </a>
         </div>
       </div>
-      <!-- <div
+      <div
         class="lesson-quiz-container"
         v-if="lesson.practices && lesson.practices.length"
       >
@@ -44,13 +44,16 @@
           :key="index"
         >
           <hr v-show="index">
-          <div class="quiz-text">
-            <h1>{{index+1+'. '+item.title}}</h1>
-            <p>{{item.content.text}}</p>
+          <div
+            class="quiz-text"
+            v-if="item.type=='docker'"
+          >
+            <h1>{{item.id+'. '+item.name}}</h1>
+            <p>{{item.docker.description}}</p>
             <p>網站位置：<a
                 :href="item.content.path"
                 target="_blank"
-              >{{item.content.path}}</a></p>
+              >{{item.docker.url+':'+item.docker.port}}</a></p>
           </div>
           <div class="quiz-flag-container">
             <div class="quiz-flag">
@@ -68,7 +71,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
