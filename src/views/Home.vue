@@ -35,7 +35,7 @@
       </header>
       <div class="intro-container">
         <h1 class="intro-title">資訊安全的領域</h1>
-        <p class="intro-info">資訊安全的技術主要被分成哪幾種領域，簡單介紹 資訊安全的技術主要被分成哪幾種領域，簡單介紹 資訊安全的技術主要被分成哪幾種領域，簡單介紹</p>
+        <p class="intro-info">Demo</p>
       </div>
       <div
         id="course"
