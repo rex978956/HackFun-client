@@ -3,7 +3,7 @@
     <div class="footer-container">
       <div class="about">
         <span class="title">關於我們</span>
-        <span>關於我們關於我們關於我們關於我們</span>
+        <span>一群對於資訊安全有興趣的學生</span>
       </div>
       <div class="icon-container">
         <a

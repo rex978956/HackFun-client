@@ -30,18 +30,17 @@
           v-if="course.prepareKnowledge.length>0"
         >
           <h1>建議先備知識</h1>
-          <!-- <hr>
-          <p>{{course.prepareKnowledge.title}}</p>
+          <!-- <hr> -->
           <ol>
             <li
-              v-for="item in course.prepareKnowledge.item"
+              v-for="item in course.prepareKnowledge"
               :key="item"
-            >{{item}}</li>
+            ><a href="#">{{item.description}}</a></li>
           </ol>
-          <hr> -->
+          <hr>
         </div>
         <!-- 測試資料  -->
-        <div
+        <!-- <div
           class="course-base-container"
           v-else
         >
@@ -53,7 +52,7 @@
             <li>測試測試</li>
           </ol>
           <hr>
-        </div>
+        </div> -->
 
         <div class="lesson-container">
           <!-- <div class="lesson-item">
@@ -66,7 +65,7 @@
             v-for="(item, index) in course.lessons"
             :key="index"
           >
-            <p>{{index+'. '+item.name}}</p>
+            <p>{{item.name}}</p>
             <router-link :to="`${$route.params.courseid}/${item.id}`">
             </router-link>
           </div>
@@ -201,6 +200,16 @@
       line-height: 1em;
       counter-increment: line;
       content: counter(line);
+    }
+
+    .course-base-container>ol>li>a {
+      font: Bold 20px/30px Noto Sans CJK TC;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .course-base-container>ol>li>a:hover {
+      color: #f39251;
     }
 
     .lesson-container {

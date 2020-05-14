@@ -18,10 +18,10 @@
           <h2>想接觸資安卻不知如何入門嗎？</h2>
           <h2>我們準備了一些教學，請找適合自己的服用 :)</h2>
         </div>
-        <div class="info">
+        <!-- <div class="info">
           <span>* 建議熟悉基本 HTML/JS 知識，若對這塊尚不了解可參考</span>
           <a href="#">這裡</a>
-        </div>
+        </div> -->
         <div class="start">
           <a
             class="btn_style scroll"
@@ -33,12 +33,14 @@
           <img src="@/assets/images/arrow.svg">
         </div>
       </header>
-      <div class="intro-container">
+      <div
+        class="intro-container"
+        id="course"
+      >
         <h1 class="intro-title">資訊安全的領域</h1>
-        <p class="intro-info">Demo</p>
+        <!-- <p class="intro-info">Demo</p> -->
       </div>
       <div
-        id="course"
         class="content-container"
         v-for="(field, index) in fields"
         :key="index"

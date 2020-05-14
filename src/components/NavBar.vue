@@ -29,7 +29,7 @@
         <!-- <p class="username">{{authState.profile.name}}</p> -->
         <!-- authState.profile.pic -->
         <img
-          src="https://www.gravatar.com/avatar/0f209cffb69a00b5a186034340568e8b?s=140&d=retro"
+          :src="authState.profile.pic"
           @click="showDropdown = !showDropdown"
         >
         <!-- <div
@@ -47,7 +47,8 @@
           >
             <p class="dropdown-username">{{'Hi! '+ authState.profile.name}}</p>
             <ul @click="showDropdown = !showDropdown">
-              <li class="dropdown-item">test data</li>
+              <li class="dropdown-item">Profile</li>
+              <li class="dropdown-item">Submissions</li>
               <li
                 class="dropdown-item"
                 @click="logoutHandler"
@@ -314,7 +315,7 @@
     letter-spacing: 0px;
     color: #D9D9D9;
     background-color: #434343;
-    border-bottom: 2px solid #FFF;
+    border-bottom: 1px solid #FFF;
     /* width: 100%; */
   }
 

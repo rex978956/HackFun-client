@@ -8,7 +8,7 @@
 
       <div class="lesson-info-container">
         <div class="lesson-info">
-          <h1>{{lesson.index+'. '+lesson.name}}</h1>
+          <h1>{{lesson.name}}</h1>
           <p>{{lesson.description}}</p>
         </div>
         <div class="arrow-left">
@@ -49,15 +49,32 @@
             v-if="item.type=='docker'"
           >
             <div class="docker-quiz-text">
-              <h1>{{item.id+'. '+item.name}}</h1>
+
+              <img
+                id="accepted"
+                src=/images/accepted.svg
+                v-if="isCorrect.indexOf(item.id) !== -1 "
+              />
+              <h1>{{item.name}}</h1>
               <p>{{item.docker.description}}</p>
-              <p>網站位置：<a
+              <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">服務位置:<a
+                  :href="`http://${item.docker.url}:${item.docker.port}`"
+                  target="_blank"
+                >{{item.docker.url+':'+item.docker.port}}</a></p>
+              <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">檔案: <a
+                  :href="`#`"
+                  target="_blank"
+                >{{item.name}}</a></p>
+              <p v-else>網站位置：<a
                   :href="`http://${item.docker.url}:${item.docker.port}`"
                   target="_blank"
                 >{{item.docker.url+':'+item.docker.port}}</a></p>
             </div>
             <div class="quiz-flag-container">
-              <div class="quiz-flag">
+              <div
+                class="quiz-flag"
+                v-if="isCorrect.indexOf(item.id) === -1 "
+              >
                 <input
                   class="flag"
                   type="text"
@@ -69,6 +86,7 @@
                 <button
                   class="submit"
                   type="submit"
+                  @click="handleSubmit(item.id , 1)"
                 >送出</button>
               </div>
             </div>
@@ -78,7 +96,12 @@
             v-if="item.type=='choose'"
           >
             <div class="choose-quiz-text">
-              <h1>{{item.id+'. '+item.name}}</h1>
+              <img
+                id="accepted"
+                src=/images/accepted.svg
+                v-if="isCorrect.indexOf(item.id) !== -1 "
+              />
+              <h1>{{item.name}}</h1>
               <p>{{item.choose.statement}}</p>
               <div
                 class="checkbox"
@@ -140,8 +163,10 @@
 
               </div>
               <button
+                v-if="isCorrect.indexOf(item.id) === -1 "
                 class="submit"
                 type="submit"
+                @click="handleSubmit(item.id , 2)"
               >送出</button>
             </div>
           </div>
@@ -158,12 +183,14 @@
   } from 'vuex'
 
   import VideoFrame from "@/components/VideoFrame";
+  import axios from 'axios'
 
   export default {
     data() {
       return {
         flag: '',
-        choose: []
+        choose: [],
+        isCorrect: []
       }
     },
     components: {
@@ -182,9 +209,31 @@
     },
     methods: {
       ...mapActions(['getLesson']),
-      // getLoadingState() {
-      //   this.isLoading = this.lesson.isAppending
-      // }
+      handleSubmit(practice_id, type) {
+        console.log('submit', practice_id, type)
+        var url = 'https://www.hackfun.space/api'
+        switch (type) {
+          case 1:
+            axios.post(url + '/flag', this.flag)
+              .then(res => {
+                console.log('res:', res)
+              })
+            break;
+
+          case 2:
+            axios.post(url + '/choose/' + practice_id, this.choose)
+              .then(res => {
+                console.log('res:', res)
+              })
+            break;
+
+          default:
+            break;
+        }
+        this.isCorrect.push(
+          practice_id
+        )
+      },
     },
   }
 </script>
@@ -294,11 +343,16 @@
     background-color: #2d2e51;
   }
 
+  .docker-quiz-text,
+  .choose-quiz-text {
+    position: relative;
+  }
 
   .docker-quiz-text,
   .choose-quiz-text {
     border: 2px dashed #FFFFFF;
     margin-bottom: 2rem;
+    display: relative;
   }
 
   .docker-quiz-text>h1,
@@ -315,6 +369,17 @@
   .docker-quiz-text>p>a {
     font: 18px/27px Noto Sans CJK TC;
     color: #B06AEC;
+  }
+
+  #accepted {
+    position: absolute;
+    z-index: 1;
+    width: 150px;
+    top: -2rem;
+    right: -2rem;
+    transform: rotate(15deg);
+    /* top: -1rem; */
+    /* float: right; */
   }
 
   .quiz-flag-container {
