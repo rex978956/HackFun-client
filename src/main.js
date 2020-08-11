@@ -10,6 +10,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import VueLoading from 'vue-loading-overlay'
 // import 'vue-loading-overlay/dist/vue-loading.css'
 // import Axios from 'axios'
+import VueYoutube from 'vue-youtube'
+// import Simplert from 'vue2-simplert-plugin'
+// require('vue2-simplert-plugin/dist/vue2-simplert-plugin.css')
+// Vue.use(Simplert)
+
+Vue.use(VueYoutube)
 
 library.add(fab)
 
@@ -29,5 +35,5 @@ new Vue({
   router,
   store,
   FontAwesomeIcon,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount('#app')

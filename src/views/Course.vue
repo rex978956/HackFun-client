@@ -35,7 +35,7 @@
             <li
               v-for="item in course.prepareKnowledge"
               :key="item"
-            ><a href="#">{{item.description}}</a></li>
+            ><a :href="item.url">{{item.description}}</a></li>
           </ol>
           <hr>
         </div>

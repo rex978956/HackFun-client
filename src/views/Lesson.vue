@@ -4,7 +4,13 @@
     class="main-container"
   >
     <div class="lesson-wrapper">
-      <VideoFrame :src="lesson.vid_url" />
+      <!-- <VideoFrame :src="lesson.vid_url" /> -->
+      <VideoFrame
+        :lessonid="lesson.id"
+        :vid="lesson.vid_url"
+        :sec="lesson.vid_sec"
+      />
+      <!-- <VideoFrame :id="lesson.vid_url" /> -->
 
       <div class="lesson-info-container">
         <div class="lesson-info">
@@ -52,19 +58,27 @@
 
               <img
                 id="accepted"
-                src=/images/accepted.svg
+                src="/images/failure.svg"
+                v-if="isFailed.indexOf(item.id) !== -1 "
+              />
+              <img
+                id="accepted"
+                src="/images/accepted.svg"
                 v-if="isCorrect.indexOf(item.id) !== -1 "
               />
               <h1>{{item.name}}</h1>
               <p>{{item.docker.description}}</p>
-              <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">服務位置:<a
-                  :href="`http://${item.docker.url}:${item.docker.port}`"
+              <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">服務位置: <code target="_blank">nc
+                  {{item.docker.url+' '+item.docker.port}}</code>
+                檔案: <a
+                  :href="`https://hackfun.space/api/download/${item.docker.file_hash}`"
                   target="_blank"
-                >{{item.docker.url+':'+item.docker.port}}</a></p>
-              <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">檔案: <a
-                  :href="`#`"
+                >{{item.name}}</a>
+              </p>
+              <!-- <p v-if="lesson.course === 'Pwn (程式漏洞分析與利用)'">檔案: <a
+                  :href="`https://hackfun.space/api/download/${item.docker.file_hash}`"
                   target="_blank"
-                >{{item.name}}</a></p>
+                >{{item.name}}</a></p> -->
               <p v-else>網站位置：<a
                   :href="`http://${item.docker.url}:${item.docker.port}`"
                   target="_blank"
@@ -78,10 +92,10 @@
                 <input
                   class="flag"
                   type="text"
-                  placeholder="Flag 格式 HackFun{xxxxxxx}"
-                  name="flag"
+                  placeholder="Flag 格式 Hackfun{xxxxxxx}"
+                  name="flags"
                   maxlength="41"
-                  v-model="flag"
+                  v-model="flags[findIndex(item.id)]"
                 />
                 <button
                   class="submit"
@@ -100,6 +114,12 @@
                 id="accepted"
                 src=/images/accepted.svg
                 v-if="isCorrect.indexOf(item.id) !== -1 "
+              />
+
+              <img
+                id="accepted"
+                src="/images/failure.svg"
+                v-if="isFailed.indexOf(item.id) !== -1 "
               />
               <h1>{{item.name}}</h1>
               <p>{{item.choose.statement}}</p>
@@ -134,7 +154,7 @@
                   :id="opt.id"
                   type="checkbox"
                   v-model="choose"
-                  :value="opt.value"
+                  :value="opt.id"
                 />
                 <label
                   class="cbx"
@@ -188,9 +208,11 @@
   export default {
     data() {
       return {
-        flag: '',
+        flags: [],
         choose: [],
-        isCorrect: []
+        isCorrect: [],
+        isFailed: [],
+        recIndex: []
       }
     },
     components: {
@@ -207,33 +229,81 @@
     mounted() {
       // this.getLoadingState()
     },
+    beforeUpdate() {
+      var p = this.lesson.practices
+      for (var i in p) {
+        // console.log(p[i].id, p[i].solved)
+        if (p[i].solved) {
+          this.isCorrect.push(
+            p[i].id
+          )
+        }
+        if (p[i].type === "docker" && this.recIndex.indexOf(p[i].id) === -1) {
+          this.flags.push("")
+          this.recIndex.push(p[i].id)
+        }
+      }
+    },
     methods: {
       ...mapActions(['getLesson']),
       handleSubmit(practice_id, type) {
-        console.log('submit', practice_id, type)
         var url = 'https://www.hackfun.space/api'
         switch (type) {
           case 1:
-            axios.post(url + '/flag', this.flag)
-              .then(res => {
-                console.log('res:', res)
+            axios.post(url + '/flag', {
+                flag: this.flags[this.findIndex(practice_id)],
+                id: practice_id
               })
+              .then(res => {
+                console.log("res", res)
+                if (res.data.ok !== false) {
+                  this.isCorrect.push(
+                    practice_id
+                  )
+                  let tmp = new Set(this.isFailed)
+                  tmp.delete(practice_id)
+                  this.isFailed = Array.from(tmp)
+                }
+              }).catch(err => {
+                this.isFailed.push(practice_id)
+                console.log("Docker", this.isFailed, err)
+              })
+            this.flag = ""
             break;
 
           case 2:
-            axios.post(url + '/choose/' + practice_id, this.choose)
-              .then(res => {
-                console.log('res:', res)
+            axios.post(url + '/choose', {
+                choose: this.choose,
+                id: practice_id
               })
+              .then(res => {
+                if (res.data.ok) {
+                  this.isCorrect.push(
+                    practice_id
+                  )
+                  let tmp = new Set(this.isFailed)
+                  tmp.delete(practice_id)
+                  this.isFailed = Array.from(tmp)
+                } else {
+                  this.isFailed.push(practice_id)
+                  console.log("choose", this.isFailed)
+                }
+              })
+            this.choose = []
             break;
 
           default:
             break;
         }
-        this.isCorrect.push(
-          practice_id
-        )
+        console.log('submit', practice_id, type, this.isFailed)
       },
+      findIndex(practice_id) {
+        for (var i in this.recIndex) {
+          if (this.recIndex[i] === practice_id) {
+            return this.recIndex.indexOf(this.recIndex[i])
+          }
+        }
+      }
     },
   }
 </script>
@@ -371,11 +441,16 @@
     color: #B06AEC;
   }
 
+  .docker-quiz-text>p>code {
+    font: 18px/27px Noto Sans CJK TC;
+    color: #e83e8c;
+  }
+
   #accepted {
     position: absolute;
     z-index: 1;
-    width: 150px;
-    top: -2rem;
+    width: 145px;
+    top: -3rem;
     right: -2rem;
     transform: rotate(15deg);
     /* top: -1rem; */
